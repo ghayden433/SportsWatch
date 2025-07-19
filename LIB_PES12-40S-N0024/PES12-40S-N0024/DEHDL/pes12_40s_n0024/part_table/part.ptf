@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'PES12_40S_N0024'
+CLASS = DISCRETE
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Bourns", "PES12-40S-N0024" (!) = "", "PES1240SN0024", "Other", "652-PES12-40S-N0024", "https://www.mouser.co.uk/ProductDetail/Bourns/PES12-40S-N0024?qs=9fn1gpisni7PBzk9dl6VPg%3D%3D", "ENCODER ROTARY", "https://www.bourns.com/docs/Product-Datasheets/PES12.pdf", "8.5 mm"
+END_PART
+
+END.

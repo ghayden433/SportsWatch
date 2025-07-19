@@ -1,0 +1,18 @@
+.BMA423 :1 ;Accelerometers Triaxial low-g 12bit Acceleration Sensor
+BMA423
+*STM IC
+*NGS
+*PLB 1="SDO" 2="SDX" 3="VDDIO" 4="ASDA" 5="INT1" 6="INT2" 7="VDD" 8="GNDIO" 9="GND" 10="CSB" 11="ASCL" 12="SCX"
+*MXP 12
+*DFN BMA423
+~!Manufacturer_Name (BOSCH)
+~!Manufacturer_Part_Number (BMA423)
+~!Mouser Part Number (262-BMA423)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/Bosch-Sensortec/BMA423?qs=HXFqYaX1Q2xC%252BSgeGoX3mg%3D%3D)
+~!Arrow Part Number (BMA423)
+~!Link Arrow Price/Stock (https://www.arrow.com/en/products/bma423/bosch)
+~!Link Datasheet (https://www.mouser.com/datasheet/2/783/BST-BMA423-DS000-1509600.pdf)
+~!Height (1mm)
+~!3D_Model (BMA423)
+BMA423
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 6.1!U 7.1!U 8.1!U 9.1!U 10.1!U 11.1!U 12.1!U 

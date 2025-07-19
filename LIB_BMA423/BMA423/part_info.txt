@@ -1,0 +1,9 @@
+Manufacturer=BOSCH
+PartNumber=BMA423
+PartCategory=Integrated Circuit
+PackageCategory=Other
+PinCount=12
+Version=1.4
+Released=2019-12-10 11:08:58
+Downloaded=2025-06-29 03:45:46
+3D=Y

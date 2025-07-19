@@ -1,0 +1,17 @@
+.PES12-40S-N0024 :1 ;ENCODER ROTARY
+PES1240SN0024
+*STM U
+*NGS
+*PNM 1=A1 2=B1 3=C1 4=MH1 5=MH2
+*PLB 1="A1" 2="B1" 3="C1" 4="MH1" 5="MH2"
+*MXP 5
+*DFN PES12-40S-N0024
+~!Mouser Part Number (652-PES12-40S-N0024)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/Bourns/PES12-40S-N0024?qs=9fn1gpisni7PBzk9dl6VPg%3D%3D)
+~!Manufacturer_Name (Bourns)
+~!Manufacturer_Part_Number (PES12-40S-N0024)
+~!Link Datasheet (https://www.bourns.com/docs/Product-Datasheets/PES12.pdf)
+~!Height (8.5mm)
+~!3D_Model (PES12-40S-N0024)
+PES12-40S-N0024
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 

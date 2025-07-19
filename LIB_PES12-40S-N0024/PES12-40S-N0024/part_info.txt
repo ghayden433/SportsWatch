@@ -1,0 +1,9 @@
+Manufacturer=Bourns
+PartNumber=PES12-40S-N0024
+PartCategory=Undefined or Miscellaneous
+PackageCategory=Other
+PinCount=5
+Version=1.1
+Released=2019-05-18 21:55:19
+Downloaded=2025-07-02 19:10:40
+3D=Y

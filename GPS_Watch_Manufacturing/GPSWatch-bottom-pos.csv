@@ -1,0 +1,4 @@
+Ref,Val,Package,PosX,PosY,Rot,Side
+"C16","0.1uF","C_0402_1005Metric",128.500000,-117.600000,-90.000000,bottom
+"J1","Battery","JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal",141.900000,-121.000000,180.000000,bottom
+"J4","Micro_SD_Card_Det2","microSD_HC_Hirose_DM3BT-DSF-PEJS",118.200000,-117.600000,90.000000,bottom

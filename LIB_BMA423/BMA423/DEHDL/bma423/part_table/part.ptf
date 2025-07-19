@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'BMA423'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "ARROW_PART_NUMBER", "ARROW_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "BOSCH", "BMA423" (!) = "", "BMA423", "Other", "262-BMA423", "https://www.mouser.co.uk/ProductDetail/Bosch-Sensortec/BMA423?qs=HXFqYaX1Q2xC%252BSgeGoX3mg%3D%3D", "BMA423", "https://www.arrow.com/en/products/bma423/bosch", "Accelerometers Triaxial low-g 12bit Acceleration Sensor", "https://www.mouser.com/datasheet/2/783/BST-BMA423-DS000-1509600.pdf", "1 mm"
+END_PART
+
+END.
