@@ -454,7 +454,7 @@
 			(uuid "b0aa08ab-71a8-413a-9a64-2538bcf3a17b")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EVQ_P7A01P/EVQ-P7A01P.STEP"
+		(model "${KIPRJMOD}/3d Models/EVQ_P7A01P/EVQ-P7A01P.STEP"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1831,7 +1831,7 @@
 			(uuid "482e491d-072b-4216-be77-99364623ee1f")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/L96_M33 (2)/L96-M33.step"
+		(model "${KIPRJMOD}/3d Models/L96_M33 (2)/L96-M33.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3908,7 +3908,7 @@
 			(uuid "3b8e5524-4011-42cd-8d90-9e2e7b5c98d3")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/LIB_BMA423/BMA423/3D/BMA423.stp"
+		(model "${KIPRJMOD}/3d Models/LIB_BMA423/BMA423/3D/BMA423.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5446,7 +5446,7 @@
 			(uuid "9071752c-cbb6-4d41-a8e6-91cb97d23e06")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/ABS07_32_768KHZ_6_T/ABS07-32.768KHZ-6-T.step"
+		(model "${KIPRJMOD}/3d Models/ABS07_32_768KHZ_6_T/ABS07-32.768KHZ-6-T.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7297,7 +7297,7 @@
 			(uuid "5e998200-319f-4fa8-918c-9c720e5450fd")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/1051330001_stp/1051330001.stp"
+		(model "${KIPRJMOD}/3d Models/1051330001_stp/1051330001.stp"
 			(offset
 				(xyz 0 0 2.5)
 			)
@@ -7305,7 +7305,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -180 -0 -0)
+				(xyz -0 -180 -180)
 			)
 		)
 	)
@@ -8146,6 +8146,17 @@
 				(xyz -90 -0 -0)
 			)
 		)
+		(model "${KIPRJMOD}/3d Models/ABM3_8_000MHZ_B4Y_T/ABM3-8.000MHZ-B4Y-T.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
+			)
+		)
 	)
 	(footprint "Button_Switch_SMD:SW_SPST_EVQP7A"
 		(layer "F.Cu")
@@ -8438,7 +8449,7 @@
 			(uuid "6cec296d-44cd-4f28-8cd3-99778d12967c")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EVQ_P7A01P/EVQ-P7A01P.STEP"
+		(model "${KIPRJMOD}/3d Models/EVQ_P7A01P/EVQ-P7A01P.STEP"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11630,7 +11641,7 @@
 			(uuid "c69ebf08-596d-45f6-a1f9-9cbae6872b6d")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EVQ_P7A01P/EVQ-P7A01P.STEP"
+		(model "${KIPRJMOD}/3d Models/EVQ_P7A01P/EVQ-P7A01P.STEP"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13223,18 +13234,7 @@
 			(uuid "7ad0a955-ee81-4471-afc9-65d5e2e5017c")
 		)
 		(embedded_fonts no)
-		(model "PES12-40S-N0024.stp"
-			(offset
-				(xyz 2.499999962 7.469999678 1.22000001)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "${KIPRJMOD}/LIB_PES12-40S-N0024/PES12-40S-N0024/3D/PES12-40S-N0024.stp"
+		(model "${KIPRJMOD}/3d Models/LIB_PES12-40S-N0024/PES12-40S-N0024/3D/PES12-40S-N0024.stp"
 			(offset
 				(xyz 2.5 7.5 0)
 			)
