@@ -1,6 +1,6 @@
 This GPS watch project began from my interest in building a custom fitness device that records accurate run and cycle data and allows users to create and implement their own features.
 
-## Hardware🖥️🔧
+# Hardware🖥️🔧
 ### V1.0
 - STM32L476 Microprocessor
 - Quectel L96 for GPS
@@ -11,7 +11,7 @@ This GPS watch project began from my interest in building a custom fitness devic
 - I2C 128x64 OLED display
 
 ### V1.1
-## Updates
+#### Updates
 - STM32F103
 - BMA456 as pedometer
 - Smaller footprint rotary encoder
