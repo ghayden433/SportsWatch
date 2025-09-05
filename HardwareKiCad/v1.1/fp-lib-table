@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ImportsLibrary")(type "KiCad")(uri "${KIPRJMOD}/ImportsLibrary.pretty")(options "")(descr ""))
+)

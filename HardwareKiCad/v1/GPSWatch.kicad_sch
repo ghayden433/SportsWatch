@@ -6567,6 +6567,17 @@
 		)
 		(uuid "c15579f0-f22d-4a5e-a2fb-86fd4c527a0f")
 	)
+	(text "07/21/2025"
+		(exclude_from_sim no)
+		(at 212.344 193.548 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 170 29 29 1)
+			)
+		)
+		(uuid "c2e47c02-d187-4f63-89a3-23ec1f85cb34")
+	)
 	(text "to do:\nconnect ep to gnd \nw/ ground pour that vias to gnd plane"
 		(exclude_from_sim no)
 		(at 87.63 193.548 0)
@@ -14132,7 +14143,7 @@
 		(dnp no)
 		(uuid "8c8a6238-4c5f-46bc-9154-f927f8b7c2c1")
 		(property "Reference" "SW4"
-			(at 78.486 118.11 0)
+			(at 74.93 122.174 0)
 			(effects
 				(font
 					(size 1.27 1.27)
