@@ -1,8 +1,9 @@
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
-#include "c64_lower.h"
+#include "font8x8.h" 
 
 #define FRAMEBUFFER_SIZE 1025 // 128x64 pixels / 8 bits per byte + 1 control byte
+#define FONT_OFFSET 32 // ASCII offset for font array
 
 class ssd1306 {
     public:
@@ -68,12 +69,12 @@ class ssd1306 {
         }
 
 
-        // prints UPPERCASE text on the OLED display from the top right
+        // prints text on the OLED display from the top right
         void print_text(char* text){
             int base = 1; // start after control byte
             while (*text){
                 for (int i = 0; i < 8; i++){
-                    framebuffer[base + i] = FONT[*text][i];
+                    framebuffer[base + i] = FONT[*text - FONT_OFFSET][i];
                 }
                 base += 8;
                 text++;

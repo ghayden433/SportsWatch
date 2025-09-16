@@ -8,12 +8,19 @@
 #include "hardware/clocks.h"
 #include "hardware/uart.h"
 #include "ssd1306.h"
+#include "BeitanBN180.h"
 
 // I2C defines for display
 #define DISP_PORT i2c0
 #define DISP_SDA 16
 #define DISP_SCL 17
 #define DISP_ADDR 0x3C
+
+// UART defines for GPS
+#define BAUD_RATE 9600
+#define UART_ID uart1
+#define UART_TX_PIN 6
+#define UART_RX_PIN 7
 
 int main()
 {
