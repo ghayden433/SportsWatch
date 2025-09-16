@@ -7,6 +7,7 @@ This GPS watch project began from my interest in building a custom fitness devic
 - Beitian BN-180 for GPS
 - SD for storage of SPI
 - Button interrupts for navigation
+- going prototype route at the moment due to cost of manufacturing PCBs
 
 ### V1.0
 - STM32L476 Microprocessor
@@ -24,7 +25,7 @@ This GPS watch project began from my interest in building a custom fitness devic
 - Smaller footprint rotary encoder
 - Bottom side no longer requires assembly
 
-#Software
+# Software 💾
 ### Prototype
 - written in C++ useing object oriented methodology
 - bare metal software
