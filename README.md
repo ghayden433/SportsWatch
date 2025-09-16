@@ -8,6 +8,8 @@ This GPS watch project began from my interest in building a custom fitness devic
 - SD for storage of SPI
 - Button interrupts for navigation
 - going prototype route at the moment due to cost of manufacturing PCBs
+![Prototype Hardware Image](https://github.com/ghayden433/SportsWatch/blob/master/Hardware/Prototype/IMG_1646.jpg "Logo Title Text 1")
+
 
 ### V1.0
 - STM32L476 Microprocessor
