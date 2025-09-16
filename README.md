@@ -3,8 +3,8 @@ This GPS watch project began from my interest in building a custom fitness devic
 # Hardware🖥️🔧
 ### Prototype
 - Based on RP2040, prototyped on pi pico
-- features ssd1306 OLED Display
-- Beitian BN-180 for GPS
+- features ssd1306 OLED Display over I2C
+- Beitian BN-180 for GPS over UART
 - SD for storage of SPI
 - Button interrupts for navigation
 - going prototype route at the moment due to cost of manufacturing PCBs
