@@ -1,7 +1,8 @@
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
-#include <string.h>
+#include "c64_lower.h"
 
+#define FRAMEBUFFER_SIZE 1025 // 128x64 pixels / 8 bits per byte + 1 control byte
 
 class ssd1306 {
     public:
@@ -9,12 +10,18 @@ class ssd1306 {
         uint8_t sda;
         uint8_t scl;
         uint8_t addr;
+        uint8_t framebuffer[FRAMEBUFFER_SIZE]; // 128x64 pixels / 8 bits per byte
 
         ssd1306(i2c_inst_t *port, uint8_t sda, uint8_t scl, uint8_t addr) {
             this->port = port;
             this->sda = sda;
             this->scl = scl;
             this->addr = addr;
+            // Initialize framebuffer to zero
+            for(int i = 0; i < FRAMEBUFFER_SIZE; i++){
+                this->framebuffer[i] = 0; 
+            }
+            this->framebuffer[0] = 0x40;   // Control byte for data
 
             // Initialize I2C for display
             i2c_init(port, 400 * 1000);
@@ -51,14 +58,9 @@ class ssd1306 {
             // Small delay to ensure the display is ready
             sleep_ms(100);
 
-            // Initialize framebuffer
-            uint8_t data_cb = 0x40;
-            uint8_t framebuffer[1024];
-            memset(framebuffer, 0x00, sizeof(framebuffer)); // Fill framebuffer with black pixels
-
             // Set column and page address before sending framebuffer
             uint8_t set_col_page[] = {
-                0x00,       // Control byte for commands
+                0x00,             // Control byte for commands
                 0x21, 0x00, 0x7F, // Set column address: 0 to 127
                 0x22, 0x00, 0x07  // Set page address: 0 to 7
             };
@@ -66,37 +68,17 @@ class ssd1306 {
         }
 
 
-        
-        int printB() {
-            // initialize framebuffer
-            uint8_t data_cb = 0x40;
-            uint8_t framebuffer[1024];
-            memset(framebuffer, 0x00, sizeof(framebuffer)); // Fill framebuffer with black pixels
-
-            // Set column and page address before sending framebuffer
-            uint8_t set_col_page[] = {
-                0x00,       // Control byte for commands
-                0x21, 0x00, 0x7F, // Set column address: 0 to 127
-                0x22, 0x00, 0x07  // Set page address: 0 to 7
-            };
-            i2c_write_blocking(port, addr, set_col_page, sizeof(set_col_page), false);
-
-            // Prepare data buffer: 0x40 followed by framebuffer
-            uint8_t oled_data[1025];
-            oled_data[0] = 0x40;
-            memcpy(&oled_data[1], framebuffer, 1024);
-            oled_data[1] = 0x00;
-            oled_data[2] = 0x7F;
-            oled_data[3] = 0x7F;
-            oled_data[4] = 0x49;
-            oled_data[5] = 0x49;
-            oled_data[6] = 0x7F;
-            oled_data[7] = 0x36;
-            oled_data[8] = 0x00;
-
-            // Send framebuffer data to the display in one transaction
-            i2c_write_blocking(this->port, this->addr, oled_data, sizeof(oled_data), false);
-
-            return 0;
+        // prints UPPERCASE text on the OLED display from the top right
+        void print_text(char* text){
+            int base = 1; // start after control byte
+            while (*text){
+                for (int i = 0; i < 8; i++){
+                    framebuffer[base + i] = FONT[*text][i];
+                }
+                base += 8;
+                text++;
+            }
+            
+            i2c_write_blocking(this->port, this->addr, framebuffer, sizeof(framebuffer), false);
         }
 };

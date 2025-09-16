@@ -7,7 +7,6 @@
 #include "hardware/watchdog.h"
 #include "hardware/clocks.h"
 #include "hardware/uart.h"
-#include <string.h>
 #include "ssd1306.h"
 
 // I2C defines for display
@@ -20,11 +19,12 @@ int main()
 {
     stdio_init_all();
 
+    // initialize display object
     ssd1306 display(DISP_PORT, DISP_SDA, DISP_SCL, DISP_ADDR);
-    display.printB();
+    display.print_text("WOW VERY COOL THE DISPLAY WORKS THIS IS AWESOME");
 
     const uint LED_PIN = 25;
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, true);  
-    gpio_put(LED_PIN, 1); // Turn on the LED to indicate the oled thing is over
+    gpio_put(LED_PIN, 1); // Turn on the LED to indicate the end of initialization
 }
