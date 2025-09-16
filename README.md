@@ -7,7 +7,7 @@ This GPS watch project began from my interest in building a custom fitness devic
 - Beitian BN-180 for GPS over UART
 - SD for storage of SPI
 - Button interrupts for navigation
-- going prototype route at the moment due to cost of manufacturing PCBs
+- going the prototype route at the moment due to cost of manufacturing PCBs
 ![Prototype Hardware Image](https://github.com/ghayden433/SportsWatch/blob/master/Hardware/Prototype/IMG_1646.jpg "Logo Title Text 1")
 
 
@@ -32,5 +32,5 @@ This GPS watch project began from my interest in building a custom fitness devic
 - written in C++ useing object oriented methodology
 - bare metal software
 - features I2C display software
-- this is a rewrite of the python version that I lost on the prototype hardware, and it currently displays the letter B on the display at startup
-
+- this is a rewrite of the python version that I lost on the prototype hardware
+- allows printing to display
