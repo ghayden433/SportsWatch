@@ -6,13 +6,14 @@
 #define FONT_OFFSET 32 // ASCII offset for font array
 
 class ssd1306 {
-    public:
+    private:
         i2c_inst_t *port;
         uint8_t sda;
         uint8_t scl;
         uint8_t addr;
         uint8_t framebuffer[FRAMEBUFFER_SIZE]; // 128x64 pixels / 8 bits per byte
 
+    public:
         ssd1306(i2c_inst_t *port, uint8_t sda, uint8_t scl, uint8_t addr) {
             this->port = port;
             this->sda = sda;
@@ -68,9 +69,17 @@ class ssd1306 {
             i2c_write_blocking(port, addr, set_col_page, sizeof(set_col_page), false);
         }
 
+        void clear() {
+            for(int i = 1; i < FRAMEBUFFER_SIZE; i++){
+                this->framebuffer[i] = 0; 
+            }
+            i2c_write_blocking(this->port, this->addr, framebuffer, sizeof(framebuffer), false);
+        }
+
 
         // prints text on the OLED display from the top right
         void print_text(char* text){
+            clear  (); // clear display before printing new text
             int base = 1; // start after control byte
             while (*text){
                 for (int i = 0; i < 8; i++){

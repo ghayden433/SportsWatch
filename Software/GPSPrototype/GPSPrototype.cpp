@@ -28,10 +28,23 @@ int main()
 
     // initialize display object
     ssd1306 display(DISP_PORT, DISP_SDA, DISP_SCL, DISP_ADDR);
-    display.print_text("WOW VERY COOL THE DISPLAY WORKS THIS IS AWESOME");
+    
+    //initialize GPS object
+    beitianBN180 gps(UART_ID, BAUD_RATE, UART_TX_PIN, UART_RX_PIN);
 
     const uint LED_PIN = 25;
     gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, true);  
-    gpio_put(LED_PIN, 1); // Turn on the LED to indicate the end of initialization
+    gpio_set_dir(LED_PIN, true);   
+
+    while (true){
+        char c = gps.read();
+        if (c){
+            display.print_text(&c);
+        }
+        sleep_ms(500);
+        display.clear();
+        gpio_put(LED_PIN, 1);
+        sleep_ms(500);
+    }
+    return 0;
 }

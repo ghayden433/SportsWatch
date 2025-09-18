@@ -8,25 +8,32 @@
 
 class beitianBN180 {
     private:
-        uart_inst_t *uart;
-        uint8_t baud;
+        uart_inst_t *uart_id;
+        uint16_t baud;
         uint8_t tx;
         uint8_t rx;
 
     public:
-        beitianBN180(uart_inst_t *uart, uint8_t baud, uint8_t tx, uint8_t rx){
-            this->uart = uart;
+        beitianBN180(uart_inst_t *uart, uint16_t baud, uint8_t tx, uint8_t rx){
+            this->uart_id = uart;
             this->baud = baud;
             this->tx = tx;
             this->rx = rx;
 
             // Initialize UART
-            uart_init(this->uart, this->baud);
+            uart_init(this->uart_id, this->baud);
             gpio_set_function(this->tx, GPIO_FUNC_UART);
             gpio_set_function(this->rx, GPIO_FUNC_UART);
+
+            uart_set_format(this->uart_id, 8, 1, UART_PARITY_NONE);
+            uart_set_fifo_enabled(this->uart_id, true);
         }
 
-        void read(){
-            
+        char read(){
+            if(uart_is_readable(this->uart_id)){
+                char c = uart_getc(this->uart_id);
+                return c;
+            }
+            return 0;
         }
-}
+};
