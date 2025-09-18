@@ -27,13 +27,26 @@ class beitianBN180 {
 
             uart_set_format(this->uart_id, 8, 1, UART_PARITY_NONE);
             uart_set_fifo_enabled(this->uart_id, true);
+
+            const uint LED_PIN = 25;
+            gpio_init(LED_PIN);
+            gpio_set_dir(LED_PIN, true); 
+
+            for (int i = 0; i < 100; i++){
+                if (uart_is_readable(uart1)){
+                    gpio_put(LED_PIN, 1); // Turn on LED if UART is enabled
+                }   
+            }
         }
 
-        char read(){
-            if(uart_is_readable(this->uart_id)){
-                char c = uart_getc(this->uart_id);
-                return c;
+        //read 10 chars from UART
+        char* read(){
+            char* c = new char[11];
+            for (int i = 0; i < 10; i++){
+                if(uart_is_readable(this->uart_id)){
+                     *(c + i) = uart_getc(this->uart_id);
+                }
             }
-            return 0;
+            return c;    
         }
 };

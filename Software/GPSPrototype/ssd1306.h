@@ -1,4 +1,3 @@
-#include "pico/stdlib.h"
 #include "hardware/i2c.h"
 #include "font8x8.h" 
 
@@ -19,13 +18,8 @@ class ssd1306 {
             this->sda = sda;
             this->scl = scl;
             this->addr = addr;
-            // Initialize framebuffer to zero
-            for(int i = 0; i < FRAMEBUFFER_SIZE; i++){
-                this->framebuffer[i] = 0; 
-            }
-            this->framebuffer[0] = 0x40;   // Control byte for data
 
-            // Initialize I2C for display
+            // Initialize I2C for display, clock speed 400kHz
             i2c_init(port, 400 * 1000);
             gpio_set_function(sda, GPIO_FUNC_I2C);
             gpio_set_function(scl, GPIO_FUNC_I2C);
@@ -34,7 +28,9 @@ class ssd1306 {
             gpio_pull_up(sda);
             gpio_pull_up(scl);
 
-            // control bytes
+            this->framebuffer[0] = 0x40;   // Control byte for data
+
+            // Initialize display setings
             uint8_t disp_init_command[] = {
                 0x00,       // Control byte for commands
                 0xAE,       // Display OFF
@@ -55,18 +51,17 @@ class ssd1306 {
                 0xAF        // Display ON
             };
 
-            // Send initialization commands to the display
-            i2c_write_blocking(port, addr, disp_init_command, sizeof(disp_init_command), false);
-            // Small delay to ensure the display is ready
-            sleep_ms(100);
-
             // Set column and page address before sending framebuffer
             uint8_t set_col_page[] = {
                 0x00,             // Control byte for commands
                 0x21, 0x00, 0x7F, // Set column address: 0 to 127
                 0x22, 0x00, 0x07  // Set page address: 0 to 7
             };
+
+            // Send initialization commands to the display
+            i2c_write_blocking(port, addr, disp_init_command, sizeof(disp_init_command), false);
             i2c_write_blocking(port, addr, set_col_page, sizeof(set_col_page), false);
+            clear(); // Clear display on init
         }
 
         void clear() {

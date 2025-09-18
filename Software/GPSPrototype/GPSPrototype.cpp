@@ -32,6 +32,16 @@ int main()
     //initialize GPS object
     beitianBN180 gps(UART_ID, BAUD_RATE, UART_TX_PIN, UART_RX_PIN);
 
+    char* text = "Hello!";
+    display.print_text(text);
+
+    while(true){
+        sleep_ms(1000);
+        char* gps_data = gps.read();
+        display.print_text(gps_data);
+    }
+
+    /*
     const uint LED_PIN = 25;
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, true);   
@@ -45,6 +55,7 @@ int main()
         display.clear();
         gpio_put(LED_PIN, 1);
         sleep_ms(500);
-    }
+    
+    }*/
     return 0;
 }
