@@ -19,12 +19,17 @@
 // UART defines for GPS
 #define BAUD_RATE 9600
 #define UART_ID uart1
-#define UART_TX_PIN 6
-#define UART_RX_PIN 7
+#define UART_TX_PIN 4
+#define UART_RX_PIN 5
 
 int main()
 {
     stdio_init_all();
+
+    gpio_init(25);
+    gpio_set_dir(25, GPIO_OUT);
+    gpio_put(25, 0);
+    sleep_ms(500);
 
     // initialize display object
     ssd1306 display(DISP_PORT, DISP_SDA, DISP_SCL, DISP_ADDR);
@@ -32,30 +37,21 @@ int main()
     //initialize GPS object
     beitianBN180 gps(UART_ID, BAUD_RATE, UART_TX_PIN, UART_RX_PIN);
 
-    char* text = "Hello!";
-    display.print_text(text);
-
-    while(true){
-        sleep_ms(1000);
-        char* gps_data = gps.read();
-        display.print_text(gps_data);
+    // initialize buffer for GPS data
+    char gps_data[129];
+    for (int i = 0; i < 129; i++){
+        gps_data[i] = ' ';
     }
+    gps_data[10] = '\0'; // null terminator
 
-    /*
-    const uint LED_PIN = 25;
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, true);   
+    gpio_init(25);
+    gpio_set_dir(25, GPIO_OUT);
 
     while (true){
-        char c = gps.read();
-        if (c){
-            display.print_text(&c);
-        }
-        sleep_ms(500);
-        display.clear();
-        gpio_put(LED_PIN, 1);
-        sleep_ms(500);
-    
-    }*/
+        sleep_ms(1000);
+        display.print_text(gps_data);
+        gps.read_nmea_sentence(gps_data, 129);
+        gpio_put(25, 1);
+    }
     return 0;
 }

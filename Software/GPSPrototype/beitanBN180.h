@@ -1,11 +1,6 @@
 #include "hardware/uart.h"
 #include "pico/stdlib.h"
 
-#define BAUD_RATE 9600
-#define UART_ID uart1
-#define UART_TX_PIN 6
-#define UART_RX_PIN 7
-
 class beitianBN180 {
     private:
         uart_inst_t *uart_id;
@@ -27,26 +22,31 @@ class beitianBN180 {
 
             uart_set_format(this->uart_id, 8, 1, UART_PARITY_NONE);
             uart_set_fifo_enabled(this->uart_id, true);
-
-            const uint LED_PIN = 25;
-            gpio_init(LED_PIN);
-            gpio_set_dir(LED_PIN, true); 
-
-            for (int i = 0; i < 100; i++){
-                if (uart_is_readable(uart1)){
-                    gpio_put(LED_PIN, 1); // Turn on LED if UART is enabled
-                }   
-            }
         }
 
-        //read 10 chars from UART
-        char* read(){
-            char* c = new char[11];
-            for (int i = 0; i < 10; i++){
+        //read len chars from UART
+        void read(char* buf, int len){
+            buf[len-1] = '\0'; // initialize null terminator 
+
+            for (int i = 0; i < len-1; i++){
                 if(uart_is_readable(this->uart_id)){
-                     *(c + i) = uart_getc(this->uart_id);
+                     buf[i] = uart_getc(this->uart_id);
                 }
+                else{
+                    buf[i] = '!'; // if no data, fill with !
+                }
+            }  
+        }
+
+        void read_nmea_sentence(char* buf, int len) {
+            buf[len - 1] = 0; // initialize null terminator
+            char c = 0;
+            int i = 0;
+            while(c != '\r') {
+                while (!uart_is_readable(this->uart_id)) { tight_loop_contents(); }
+                c = uart_getc(this->uart_id);
+                buf[i++] = c;
+                if (i >= len - 1) break; // prevent overflow
             }
-            return c;    
         }
 };
