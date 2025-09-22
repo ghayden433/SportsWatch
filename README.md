@@ -33,4 +33,4 @@ This GPS watch project began from my interest in building a custom fitness devic
 - bare metal software
 - features I2C display software
 - this is a rewrite of the python version that I lost on the prototype hardware
-- allows printing to display
+- allows printing to display and reading of nmea sentences from beitian bn180
