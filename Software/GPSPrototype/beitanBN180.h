@@ -42,11 +42,13 @@ class beitianBN180 {
             buf[len - 1] = 0; // initialize null terminator
             char c = 0;
             int i = 0;
-            while(c != '\r') {
-                while (!uart_is_readable(this->uart_id)) { tight_loop_contents(); }
-                c = uart_getc(this->uart_id);
-                buf[i++] = c;
-                if (i >= len - 1) break; // prevent overflow
+            for (int j = 0; j < 4; j++) {
+                while(c != '\r') {
+                    while (!uart_is_readable(this->uart_id)) { tight_loop_contents(); }
+                    c = uart_getc(this->uart_id);
+                    buf[i++] = c;
+                    if (i >= len - 1) break; // prevent overflow
+                }
             }
         }
 };

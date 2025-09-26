@@ -24,12 +24,13 @@
 
 int main()
 {
-    stdio_init_all();
+    //stdio_init_all();
 
     gpio_init(25);
     gpio_set_dir(25, GPIO_OUT);
     gpio_put(25, 0);
     sleep_ms(500);
+
 
     // initialize display object
     ssd1306 display(DISP_PORT, DISP_SDA, DISP_SCL, DISP_ADDR);
@@ -37,20 +38,25 @@ int main()
     //initialize GPS object
     beitianBN180 gps(UART_ID, BAUD_RATE, UART_TX_PIN, UART_RX_PIN);
 
-    // initialize buffer for GPS data
-    char gps_data[129];
-    for (int i = 0; i < 129; i++){
-        gps_data[i] = ' ';
-    }
-    gps_data[10] = '\0'; // null terminator
+    gpio_put(25, 1);
 
-    gpio_init(25);
-    gpio_set_dir(25, GPIO_OUT);
+    // initialize buffer for GPS data
+    uint8_t gps_data_len = 129; 
+    char gps_data[gps_data_len];
+    for (int i = 0; i < gps_data_len; i++){
+        gps_data[i] = 'B';
+    }
+    gps_data[gps_data_len - 1] = '\0'; // null terminator
 
     while (true){
         sleep_ms(1000);
         display.print_text(gps_data);
-        gps.read_nmea_sentence(gps_data, 129);
+
+        //clear buffer
+        for (int i = 0; i < gps_data_len; i++){
+            gps_data[i] = ' ';
+        }
+        gps.read_nmea_sentence(gps_data, gps_data_len);
         gpio_put(25, 1);
     }
     return 0;
