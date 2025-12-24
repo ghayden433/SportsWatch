@@ -1,0 +1,48 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,9.0.2*%
+%TF.CreationDate,2025-12-17T16:44:21-05:00*%
+%TF.ProjectId,Quectel_l96_Carrier_Board,51756563-7465-46c5-9f6c-39365f436172,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Copper,L2,Bot*%
+%TF.FilePolarity,Positive*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 9.0.2) date 2025-12-17 16:44:21*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,ComponentPad*%
+%ADD10C,1.700000*%
+%TD*%
+%TA.AperFunction,ComponentPad*%
+%ADD11R,1.700000X1.700000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+%TO.P,J1,8,Pin_8*%
+%TO.N,GND*%
+X145180000Y-40200000D03*
+%TO.P,J1,7,Pin_7*%
+%TO.N,/{slash}RESET*%
+X142640000Y-40200000D03*
+%TO.P,J1,6,Pin_6*%
+%TO.N,/GPS_TX*%
+X140100000Y-40200000D03*
+%TO.P,J1,5,Pin_5*%
+%TO.N,/GPS_RX*%
+X137560000Y-40200000D03*
+%TO.P,J1,4,Pin_4*%
+%TO.N,/GPS_FON*%
+X135020000Y-40200000D03*
+%TO.P,J1,3,Pin_3*%
+%TO.N,/TIMEPULSE*%
+X132480000Y-40200000D03*
+%TO.P,J1,2,Pin_2*%
+%TO.N,/3D_FIX*%
+X129940000Y-40200000D03*
+D11*
+%TO.P,J1,1,Pin_1*%
+%TO.N,+3.3V*%
+X127400000Y-40200000D03*
+%TD*%
+M02*
