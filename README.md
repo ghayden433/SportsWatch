@@ -6,7 +6,7 @@ This GPS watch project began from my interest in building a custom fitness devic
 - Quectel L96 GPS unit
 - MicroSD storage
 - Push button / rotary encoder navigation
-- ![PCB1](https://github.com/ghayden433/SportsWatch/blob/master/Hardware/IMG_1904.jpg "Logo Title Text 1")
+![PCB1](https://github.com/ghayden433/SportsWatch/blob/master/Hardware/IMG_1904.jpg "Logo Title Text 1")
 
 ### Prototype
 - Based on RP2040, prototyped on pi pico
