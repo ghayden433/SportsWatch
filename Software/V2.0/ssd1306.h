@@ -4,6 +4,10 @@
 #define FRAMEBUFFER_SIZE 1025 // 128x64 pixels / 8 bits per byte + 1 control byte
 #define FONT_OFFSET 32 // ASCII offset for font array
 
+
+/*
+Singleton class for SSD1306 OLED display
+*/
 class ssd1306 {
     private:
         i2c_inst_t *port;
@@ -12,7 +16,9 @@ class ssd1306 {
         uint8_t addr;
         uint8_t framebuffer[FRAMEBUFFER_SIZE]; // 128x64 pixels / 8 bits per byte
 
-    public:
+        ssd1306 (const ssd1306& copy);
+        ssd1306 operator=(const ssd1306& copy);
+
         ssd1306(i2c_inst_t *port, uint8_t sda, uint8_t scl, uint8_t addr) {
             this->port = port;
             this->sda = sda;
@@ -64,6 +70,20 @@ class ssd1306 {
             clear(); // Clear display on init
         }
 
+        ~ssd1306() {
+            clear(); // clear display on exit
+        }
+
+    public:
+        static ssd1306& getInstance(i2c_inst_t *port, uint8_t sda, uint8_t scl, uint8_t addr) {
+            static ssd1306 instance(port, sda, scl, addr);
+            return instance;
+        }
+
+
+        /*
+        clear display by setting all pixels to 0
+        */
         void clear() {
             for(int i = 1; i < FRAMEBUFFER_SIZE; i++){
                 this->framebuffer[i] = 0; 
@@ -72,15 +92,17 @@ class ssd1306 {
         }
 
 
-        // prints text on the OLED display from the top right
-        void print_text(char* text){
-            clear  (); // clear display before printing new text
+        /*
+        prints text on the OLED display from the top right
+        */
+         void print_text(char* text){
+            clear(); // clear display before printing new text
             int base = 1; // start after control byte
             while (*text){
                 for (int i = 0; i < 8; i++){
                     framebuffer[base + i] = FONT[*text - FONT_OFFSET][i];
                 }
-                base += 8;
+                base += 8; // move to next character
                 text++;
             }
             
