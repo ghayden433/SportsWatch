@@ -35,13 +35,15 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(GPSPrototype GPSPrototype.cpp )
+add_executable(GPSPrototype 
+    GPSPrototype.cpp 
+    lib/no-OS-FatFS-SD-SPI-RPi-Pico/hw_config.c)
 
 pico_set_program_name(GPSPrototype "GPSPrototype")
 pico_set_program_version(GPSPrototype "0.1")
 
 # Generate PIO header
-pico_generate_pio_header(GPSPrototype ${CMAKE_CURRENT_LIST_DIR}/blink.pio)
+# pico_generate_pio_header(GPSPrototype ${CMAKE_CURRENT_LIST_DIR}/blink.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(GPSPrototype 0)
@@ -49,7 +51,9 @@ pico_enable_stdio_usb(GPSPrototype 1)
 
 # Add the standard library to the build
 target_link_libraries(GPSPrototype
-        pico_stdlib)
+        pico_stdlib
+        FatFs_SPI
+)
 
 # Add the standard include files to the build
 target_include_directories(GPSPrototype PRIVATE
@@ -65,6 +69,9 @@ target_link_libraries(GPSPrototype
         hardware_watchdog
         hardware_clocks
         )
+
+# Tell CMake where to find other source code
+add_subdirectory(lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI build)
 
 pico_add_extra_outputs(GPSPrototype)
 

@@ -7,9 +7,13 @@
 #include "hardware/watchdog.h"
 #include "hardware/clocks.h"
 #include "hardware/uart.h"
-#include "ssd1306.h"
-#include "BeitanBN180.h"
+#include "lib/ssd1306.h"
+#include "lib/BeitanBN180.h"
 #include "pico/stdio_usb.h"
+
+// Include FatFS headers
+#include "ff.h"
+#include "sd_card.h"
 
 // I2C defines for display
 #define DISP_PORT i2c0
@@ -124,6 +128,37 @@ int main()
         }
     }
 */
+
+
+
+    //SD Card demo write
+
+    FATFS fs;
+    FIL fil;
+    FRESULT fr;
+
+    // Mount
+    fr = f_mount(&fs, "0:", 1);
+    if (fr != FR_OK) {
+        printf("Mount failed: %d\n", fr);
+        return 1;
+    }
+
+    // Open/create file
+    fr = f_open(&fil, "0:/test.txt", FA_WRITE | FA_CREATE_ALWAYS);
+    if (fr != FR_OK) {
+        printf("Open failed: %d\n", fr);
+        return 1;
+    }
+
+    // Write
+    f_printf(&fil, "Hello from Pico!\n");
+
+    // Close and unmount
+    f_close(&fil);
+    f_unmount("0:");
+
+    printf("Done!\n");
 
 
     uart_puts(uart1, "$PMTK353,1,1,1,1,1*2A\r\n"); 
