@@ -104,7 +104,7 @@ int main()
     }
     sleep_ms(500);
 
-
+/*
     int selpress = 0;
     while(true){
         sleep_ms(50); //attempting to debounce, but doesn't actually work
@@ -123,20 +123,12 @@ int main()
                 break;
         }
     }
+*/
 
-    /*
-    //uart_puts(uart1, "$PMTK104*37\r\n"); // GPS cold start command
-    uart_puts(uart1, "$PMTK314,-1*04\r\n"); // Set NMEA sentence output to all
-    uart_puts(uart1, "$PMTK605*3\r\n"); // Set update rate to 1Hz
 
-    printf("\n--- Firmware Version (PMTK605) ---\n");
-    uart_puts(uart1, "$PMTK605*31");
-    read_response(2000);
-
-    // Query NMEA output config
-    printf("\n--- NMEA Output Config (PMTK414) ---\n");
-    uart_puts(uart1, "$PMTK414*33");
-    read_response(2000);
+    uart_puts(uart1, "$PMTK353,1,1,1,1,1*2A\r\n"); 
+    uart_puts(uart1, "$PMTK314,-1*04\r\n"); 
+    uart_puts(uart1, "$PMTK000*32\r\n");
 
     while(true){
         if (uart_is_readable(uart1)){
@@ -144,11 +136,22 @@ int main()
             while ((c = uart_getc(uart1)) != '\n'){
                 printf("%c", c);
             }
-            uart_puts(uart1, "$PMTK605*3\r\n");
             printf("\n");
         }
+                switch (navigation) {
+            case IDLE:
+                // do nothing
+                break;
+            case SELECT:
+                printf("SELECT button pressed\n");
+                navigation = IDLE; // reset state
+                break;
+            case BACK:
+                printf("BACK button pressed\n");
+                navigation = IDLE; // reset state
+                break;
+        }
     }
-        */
 
     return 0;
 }
