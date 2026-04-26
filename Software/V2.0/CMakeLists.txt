@@ -36,8 +36,10 @@ pico_sdk_init()
 # Add executable. Default name is the project name, version 0.1
 
 add_executable(GPSPrototype 
-    GPSPrototype.cpp 
-    lib/no-OS-FatFS-SD-SPI-RPi-Pico/hw_config.c)
+    GPSPrototype.cpp
+    config.cpp
+    lib/no-OS-FatFS-SD-SPI-RPi-Pico/hw_config.c
+    )
 
 pico_set_program_name(GPSPrototype "GPSPrototype")
 pico_set_program_version(GPSPrototype "0.1")
@@ -49,11 +51,6 @@ pico_set_program_version(GPSPrototype "0.1")
 pico_enable_stdio_uart(GPSPrototype 0)
 pico_enable_stdio_usb(GPSPrototype 1)
 
-# Add the standard library to the build
-target_link_libraries(GPSPrototype
-        pico_stdlib
-        FatFs_SPI
-)
 
 # Add the standard include files to the build
 target_include_directories(GPSPrototype PRIVATE
@@ -68,6 +65,11 @@ target_link_libraries(GPSPrototype
         hardware_timer
         hardware_watchdog
         hardware_clocks
+        pico_stdlib
+        hardware_irq
+        hardware_gpio
+        hardware_uart
+        FatFs_SPI
         )
 
 # Tell CMake where to find other source code
