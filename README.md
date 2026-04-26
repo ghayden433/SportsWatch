@@ -35,9 +35,10 @@ This GPS watch project began from my interest in building a custom fitness devic
 - Bottom side no longer requires assembly
 
 # Software 💾
-### Prototype
+### V1.0
 - written in C++ useing object oriented methodology
 - bare metal software
-- features I2C display software
-- this is a rewrite of the python version that I lost on the prototype hardware
-- allows printing to display and reading of nmea sentences from beitian bn180
+- features I2C display
+- reads nmea senteces over uart
+- Micro SD over SPI
+    - using https://github.com/carlk3/no-OS-FatFS-SD-SPI-RPi-Pico
