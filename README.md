@@ -1,7 +1,7 @@
 This GPS watch project began from my interest in building a custom fitness device that records accurate run and cycle data and allows users to create and implement their own features.
 
 # Hardware🖥️🔧
-### V2.0 (an assembled board!)
+### V1.0 (an assembled board!) - based on [RP2040 minimal design](https://pip-assets.raspberrypi.com/categories/814-rp2040/documents/RP-008279-DS-1-hardware-design-with-rp2040.pdf?disposition=inline)
 - based on RP2040
 - Quectel L96 GPS unit
 - MicroSD storage
@@ -16,23 +16,6 @@ This GPS watch project began from my interest in building a custom fitness devic
 - Button interrupts for navigation
 - going the prototype route at the moment due to cost of manufacturing PCBs
 ![Prototype Hardware Image](https://github.com/ghayden433/SportsWatch/blob/master/Hardware/Prototype/IMG_1646.jpg "Logo Title Text 1")
-
-
-### V1.0
-- STM32L476 Microprocessor
-- Quectel L96 for GPS
-- BMA423 for step tracking
-- Rotary Encoder and push buttons for navigation
-- USB Micro B supports power and data for charging and programming as a device
-- SD storage
-- I2C 128x64 OLED display
-
-### V1.1
-#### Updates
-- STM32F103
-- BMA456 as pedometer
-- Smaller footprint rotary encoder
-- Bottom side no longer requires assembly
 
 # Software 💾
 ### V1.0
