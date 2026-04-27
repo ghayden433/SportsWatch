@@ -24,4 +24,4 @@ This GPS watch project began from my interest in building a custom fitness devic
 - features I2C display
 - reads nmea senteces over uart
 - Micro SD over SPI
-    - using https://github.com/carlk3/no-OS-FatFS-SD-SPI-RPi-Pico
+    - using [no-OS-FatFS-SD-SPI-RPi-Pico](https://github.com/carlk3/no-OS-FatFS-SD-SPI-RPi-Pico)
