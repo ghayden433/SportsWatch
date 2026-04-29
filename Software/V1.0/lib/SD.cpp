@@ -11,15 +11,14 @@ SD& SD::getInstance() {
         if (instance == nullptr) {
             instance = new SD();
         }
-        else {
-            static SD instance;
-        }
         return *instance;
 }
+
 
 SD::SD() {
     fil = {};
 }
+
 
 int SD::mount() {
     fr = f_mount(&fs, "0:", 1);
@@ -28,6 +27,7 @@ int SD::mount() {
     }
     return 0;
 }
+
 
 int SD::openFile(const TCHAR* fileName) {
     // construct full path name
@@ -41,14 +41,17 @@ int SD::openFile(const TCHAR* fileName) {
     return 0;
 }
 
+
 void SD::write(const char* data) {
     f_printf(&fil, data);
 }
+
 
 void SD::closeFile() {
     f_close(&fil);
     fil = {}; // reset file object
 }
+
 
 void SD::unmount() {
     f_unmount("0:");

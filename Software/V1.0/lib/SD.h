@@ -3,9 +3,9 @@
 
 
 /*
-Singleton class to manage SD card operations using FatFS. 
-Provides methods to mount the filesystem, open files, write data, and unmount the filesystem. 
-Uses a single instance of FATFS and FIL structures to manage the filesystem and file operations.
+*   Singleton class to manage SD card operations using FatFS. 
+*   Provides methods to mount the filesystem, open files, write data, and unmount the filesystem. 
+*   Uses a single instance of FATFS and FIL structures to manage the filesystem and file operations.
 */
 class SD {
 public:
@@ -15,6 +15,7 @@ public:
     static int openFile(const TCHAR* fileName);
     static void write(const char* data);
     static void closeFile();
+    static FIL& newFile();
 
 private:
     SD();
